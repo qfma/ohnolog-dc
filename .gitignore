@@ -61,5 +61,11 @@ target/
 *.pdf
 *.html 
 
+# data
+data
+*.csv
+*.counts
+
+
 # iPython checkpoints
 .ipynb_checkpoints
