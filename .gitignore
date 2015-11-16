@@ -60,3 +60,6 @@ target/
 *.png
 *.pdf
 *.html 
+
+# iPython checkpoints
+.ipynb_checkpoints
