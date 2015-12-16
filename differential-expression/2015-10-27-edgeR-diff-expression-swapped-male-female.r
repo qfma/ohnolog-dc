@@ -1,6 +1,7 @@
 unlink(".RData")
+#REMOVE everything from the workspace
+rm(list=ls(all=TRUE))
 library("edgeR")
-
 
 # =============================================
 # Normalize gonad tissue
@@ -33,7 +34,7 @@ gonad_expr$samples
 # the pair is c("A","B") then the comparison is B - A, so genes with positive
 # log-fold change are up-regulated in group B compared with group A (and vice
 # versa for genes with negative log-fold change
-gonad_de <- exactTest(gonad_expr, c("M","F"))
+gonad_de <- exactTest(gonad_expr, pair=c("M","F"))
 #plotMDS(expr)
 # Save all tags in this table. nrow(expr) makes sure that all genes are
 # included. We need to select the $table, because topTags also contains other
@@ -84,7 +85,7 @@ spleen_expr <- estimateDisp(spleen_expr)
 # Compare Male - Female expression
 # Print expression samples
 spleen_expr$samples
-spleen_de <- exactTest(spleen_expr, c("M","F"))
+spleen_de <- exactTest(spleen_expr, pair=c("M","F"))
 #plotMDS(expr)
 # Save all tags in this table. nrow(expr) makes sure that all genes are
 # included. We need to select the $table, because topTags also contains other
@@ -140,7 +141,7 @@ heart_expr$samples
 # the pair is c("A","B") then the comparison is B - A, so genes with positive
 # log-fold change are up-regulated in group B compared with group A (and vice
 # versa for genes with negative log-fold change).
-heart_de <- exactTest(heart_expr, c("M","F"))
+heart_de <- exactTest(heart_expr, pair=c("M","F"))
 #plotMDS(expr)
 # Save all tags in this table. nrow(expr) makes sure that all genes are
 # included. We need to select the $table, because topTags also contains other
@@ -189,7 +190,7 @@ liver_expr <- estimateDisp(liver_expr)
 # Print expression samples
 liver_expr$samples
 # Compare Male - Female expression
-liver_de <- exactTest(liver_expr, c("M","F"))
+liver_de <- exactTest(liver_expr, pair=c("M","F"))
 #plotMDS(expr)
 # Save all tags in this table. nrow(expr) makes sure that all genes are
 # included. We need to select the $table, because topTags also contains other
