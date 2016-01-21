@@ -59,7 +59,7 @@ gene_length_ordered <- gene_length[match(rownames(gonad_expr),gene_length$V1),]
 # Check if reorder has worked ( should return TRUE)
 all(gene_length_ordered$V1 == rownames(gonad_expr))
 gonad_expr_norm_rpkm <- rpkm(gonad_expr, normalized.lib.sizes=TRUE, log=TRUE, prior.count=0.125, gene.length=gene_length_ordered$V2)
-write.table(gonad_expr_norm_rpkm, file="2015-10-27-MF-GONAD-RPKM-NORM-log2-edgeR-test.csv",quote=F, sep=",")
+write.table(gonad_expr_norm_rpkm, file="2015-10-27-MF-GONAD-RPKM-NORM-log2-edgeR.csv",quote=F, sep=",")
 
 # =============================================
 # Normalize spleen tissue
