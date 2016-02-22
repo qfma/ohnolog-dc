@@ -66,7 +66,6 @@ def run_filter(arg_list):
         max_cov = 0
         num_samples = len(vcf_reader.samples)
         missing_sample_records = 0
-
         for record in vcf_reader:
 
             # Ensure that all samples are included in the VCF file
@@ -111,7 +110,6 @@ def run_filter(arg_list):
 
             else:
                 missing_sample_records += 1
-
         print "Maximum coverage: ", max_cov
         print "Filtered records because of missing samples: ", missing_sample_records
 

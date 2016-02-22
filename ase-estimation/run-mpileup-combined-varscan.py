@@ -81,7 +81,7 @@ def run_snp_calls(alns, name):
     vcfname = str(today)+"_"+name+"_5mismatches.vcf"
 
     print vcfname
-    with open(vcfname, "wb") as vcfout:
+    with open(vcfname, "w") as vcfout:
         p1 = Popen(samtools, stdout=PIPE)
         p2 = Popen(varscan, stdin=p1.stdout, stdout=vcfout)
         p1.stdout.close()

@@ -34,6 +34,7 @@ def calculate_variable_cutoff(max_cutoff, error_rate, threshold):
     '''
     cutoffs = {}
     min_reads = 0
+
     for i in xrange(1, max_cutoff+1):
         for x in xrange(min_reads, i):
             prob = scipy.stats.binom.pmf(x, i, error_rate)
@@ -43,8 +44,7 @@ def calculate_variable_cutoff(max_cutoff, error_rate, threshold):
                 break
     return cutoffs
 
-
-def calculate_variable_cutoff2(max_cutoff, error_rate, threshold):
+def calculate_variable_cutoff_binomtest(max_cutoff, error_rate, threshold):
     cutoffs = {}
     min_reads = 0
     for i in xrange(1, max_cutoff+1):
@@ -60,7 +60,7 @@ def calculate_variable_cutoff2(max_cutoff, error_rate, threshold):
 def main():
     # Minimum Phred score of 15 = 0.031622776601683791
     # 10**(-15./10.)
-    cutoffs = calculate_variable_cutoff(args.coverage, args.error_rate, args.threshold)
+    cutoffs = calculate_variable_cutoff_binomtest(args.coverage, args.error_rate, args.threshold)
     print "coverage", "minimum_reads", "pval"
     for c in cutoffs:
         print c, cutoffs[c][0], "{0:.15f}".format(cutoffs[c][1])
